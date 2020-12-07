@@ -1,14 +1,15 @@
 const mysql = require("mysql");
 const inquirer = require("inquirer");
 const consoleTable = require("console.table");
+const connection = require("./config/connection");
 
 
 connection.connect(function(err) {
     if (err) throw err;
     runPrompts();
-  });
+});
 
-  function runPrompts() {
+function runPrompts() {
       inquirer.prompt({
           type: "list",
           name: "task",
@@ -47,6 +48,20 @@ connection.connect(function(err) {
             case "Update employee roles":
                 updateEmployee();
                 break
+            case "All done":
+                connection.end();
+                break               
           }
+
+        
       });
   }
+
+  
+// function addDepartment
+// function addRole
+// function addEmployee
+// function viewDepartment
+// function viewRole
+// function viewEmployees
+// function updateEmployee
