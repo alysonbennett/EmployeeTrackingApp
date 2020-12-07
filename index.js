@@ -2,13 +2,6 @@ const mysql = require("mysql");
 const inquirer = require("inquirer");
 const consoleTable = require("console.table");
 
-var connection = mysql.createConnection({
-  host: "localhost",
-  port: 3306,
-  user: "root",
-  password: "rootroot",
-  database: "employeesDB"
-});
 
 connection.connect(function(err) {
     if (err) throw err;
@@ -26,7 +19,7 @@ connection.connect(function(err) {
             "Add employee",
             "View employees by department",
             "View employees by role",
-            "View employee",
+            "View all employees",
             "Update employee roles",
             "All done"
           ]
@@ -48,8 +41,8 @@ connection.connect(function(err) {
             case "View employees by role":
                 viewRole();
                 break
-            case "View employee":
-                viewEmployee();
+            case "View all employees":
+                viewEmployees();
                 break
             case "Update employee roles":
                 updateEmployee();
