@@ -120,15 +120,33 @@ function addRole() {
 function addEmployee() { 
     inquirer.prompt([
         {
-          name: "name",
+          name: "first_name",
           type: "input",
           message: "What is the first name of your new employee?"
+        },
+        {
+            name: "last_name",
+            type: "input",
+            message: "What is the last name of your new employee?"
+        },
+        {
+            name: "role_id",
+            type: "input",
+            message: "What is the role ID for your new employee?"
+        },
+        {
+            name: "manager_id",
+            type: "input",
+            message: "What is the manager ID for your new employee?"
         }
     ]).then(function(res) {
         var query = connection.query(
             "INSERT INTO role SET ? ",
             {
-              name: res.name
+              first_name: res.first_name,
+              last_name: res.last_name,
+              role_id: res.role_id,
+              manager_id: res.manager_id
             },
             function(err) {
                 if (err) throw err
@@ -140,10 +158,24 @@ function addEmployee() {
   }
 
 // function viewDepartment
-
+function viewDepartment() {
+    connection.query("SELECT employee.first_name, employee.last_name, department.name AS Department FROM employee JOIN role ON employee.role_id = role.id JOIN department ON role.department_id = department.id ORDER BY employee.id;", 
+    function(err, res) {
+      if (err) throw err
+      console.table(res)
+      startPrompt()
+    })
+  }
 
 // function viewRole
-
+function viewRole() {
+    connection.query("SELECT employee.first_name, employee.last_name, role.title AS Title FROM employee JOIN role ON employee.role_id = role.id;", 
+    function(err, res) {
+    if (err) throw err
+    console.table(res)
+    startPrompt()
+    })
+  }
 
 // function viewEmployees
 function viewEmployees() {
