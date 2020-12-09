@@ -1,8 +1,8 @@
+// Dependencies
 const inquirer = require("inquirer");
-// const consoleTable = require("console.table");
 const connection = require("./config/connection");
 
-
+// Connects functions to prompts
 const commands = {
     "View department": function () { viewTable("department") },
     "View role": () => viewTable("role"),
@@ -14,6 +14,7 @@ const commands = {
     "All done": connection.end
 }
 
+// Additional prompts for adding content to the tables
 const prompts = {
     menu: {
         message: "Menu",
@@ -71,8 +72,10 @@ const prompts = {
     ]
 }
 
+// Calls the __run__ function
 __run__()
 
+// Defines the run function
 async function __run__() {
     try {
         const { key } = await inquirer.prompt(prompts.menu)
@@ -82,7 +85,7 @@ async function __run__() {
     }
 }
 
-// runPrompts();
+// Prompts that will be shown to the user on start
 function runPrompts() {
     inquirer.prompt({
         type: "list",
@@ -193,7 +196,7 @@ function addEmployee() {
     })
 }
 
-// function viewDepartment
+// Function to view table from the database
 function viewTable(table) {
     const qry = "SELECT * FROM ??"
     connection.query(qry, [table], function (err, res) {
