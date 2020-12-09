@@ -3,6 +3,11 @@
 ## Description
 
 
+```
+As a business owner
+I want to be able to view and manage the departments, roles, and employees in my company
+So that I can organize and plan my business
+```
 
 ## Table of Contents
 
@@ -31,10 +36,7 @@ Now, while in the repo, type ```node index.js``` to start the app. Then, fill in
 
 ![node index.js](assests/node.png)
 
-![Application](assests/questions.png)
-
-Once completed, your completed README file will be added to your local repo.
-
+![]()
 
 ## Credits
 
