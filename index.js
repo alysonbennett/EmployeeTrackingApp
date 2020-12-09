@@ -100,16 +100,7 @@ function runPrompts() {
         ]
     })
         .then(function (answer) {
-            switch (answer.task) {
-                case "Add department":
-                    addDepartment();
-                    break
-                case "Add role":
-                    addRole();
-                    break
-                case "Add employee":
-                    addEmployee();
-                    break
+            switch (answer.task) {                
                 case "View department":
                     viewTable("department");
                     break
@@ -119,7 +110,16 @@ function runPrompts() {
                 case "View employees":
                     viewTable("employee");
                     break
-                case "Update employee roles":
+                case "Add department":
+                    addDepartment();
+                    break
+                case "Add role":
+                    addRole();
+                    break
+                case "Add employee":
+                    addEmployee();
+                    break
+                case "Update employee role":
                     updateEmployee();
                     break
                 case "All done":
@@ -130,7 +130,7 @@ function runPrompts() {
 }
 
 
-// Add a department to the table
+// Add a department to the tracker
 function addDepartment() {
     inquirer.prompt(prompts.addDepartment)
         .then(function (res) {
@@ -150,7 +150,7 @@ function addDepartment() {
         })
 }
 
-// function addRole
+// Add a role to the tracker
 function addRole() {
     let qry = "SELECT name, id AS value FROM department";
     connection.query(qry, function (err, departments) {
@@ -170,12 +170,11 @@ function addRole() {
 
 }
 
-// function addEmployee
+// Add an employee to the tracker
 function addEmployee() {
     let qry = "SELECT title AS name, id AS value FROM role";
     connection.query(qry, function (err, roles) {
         if (err) throw err;
-        // name = last_name + ", " + first_name
         qry = "SELECT CONCAT(last_name, \", \", first_name) AS name, id AS value FROM employee";
         connection.query(qry, function (err, managers) {
             if (err) throw err;
@@ -186,7 +185,6 @@ function addEmployee() {
                         "INSERT INTO employee SET ? ", employee,
                         function (err) {
                             if (err) throw err
-                            // console.table(res);
                             runPrompts();
                         }
                     )
@@ -204,36 +202,5 @@ function viewTable(table) {
         runPrompts()
     })
 }
-// function viewDepartment() {
-//     // const qry = "SELECT employee.first_name, employee.last_name, department.name AS Department FROM employee JOIN role ON employee.role_id = role.id JOIN department ON role.department_id = department.id ORDER BY employee.id;"
-
-//     const qry = "SELECT * FROM department"
-//     connection.query(qry, function (err, res) {
-//         if (err) throw err
-//         console.table(res)
-//         runPrompts()
-//     })
-// }
-
-// function viewRole
-// function viewRole() {
-    // connection.query("SELECT employee.first_name, employee.last_name, role.title AS Title FROM employee JOIN role ON employee.role_id = role.id;",
-    //     function (err, res) {
-    //         if (err) throw err
-    //         console.table(res)
-    //         startPrompt()
-    //     })
-
-// }
-
-// function viewEmployees
-// function viewEmployees() {
-//     connection.query("SELECT employee.first_name, employee.last_name, role.title, role.salary, department.name, CONCAT(e.first_name, ' ' ,e.last_name) AS Manager FROM employee INNER JOIN role on role.id = employee.role_id INNER JOIN department on department.id = role.department_id left join employee e on employee.manager_id = e.id;",
-//         function (err, res) {
-//             if (err) throw err
-//             console.table(res)
-//             runPrompts()
-//         })
-// }
 
 // function updateEmployee

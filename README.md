@@ -1,4 +1,4 @@
-# README Employee Tracking App
+# Employee Tracking App
 
 ## Description
 
