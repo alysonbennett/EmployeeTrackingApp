@@ -65,9 +65,9 @@ There has not been a test script written for this application yet.
 
 ## Issues
 
-Due to time constraints, this application is still under development. The function to update an employees' role is not complete, and the "All Done" choices is not working as intended.
+Due to time constraints, this application is still under development. The function to update an employees' role is not complete.
 
-Future development will correct these issues, as well as adding additional features like updating an employees' manager, view employees my manager, and delete departments, roles, and employees. 
+Future development will correct this issue, as well as adding additional features like updating an employees' manager, view employees my manager, and delete departments, roles, and employees. 
 
 ## Questions
 
