@@ -27,6 +27,8 @@ To successfully run this application, please do a npm install upon downloading t
 npm install
 ```
 
+This application comes with seed data to get the user started in the database. You will also have to access MySQL and create the database.  To do so, copy the schema from ```schema.sql``` into your local MySQL. You may also need to change the information in ```connection.js``` to mirror your information. 
+
 ## Usage
 
 To use this application, first fork and open the repo onto your local machine. Before attempting to use the app, open your terminal and perform a ```npm install``` to get the necessary packages.
@@ -40,6 +42,10 @@ Now, while in the repo, type ```node index.js``` to start the app.
 Select a choice from the drop down menu to complete tasks.
 
 ![view departments](assets/screenshots/view.png)
+
+Watch the gif below to see how the application works in your command line
+
+![Demo gif](assets/gif/demo.gif)
 
 ## Credits
 
