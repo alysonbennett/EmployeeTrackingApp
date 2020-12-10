@@ -2,6 +2,7 @@
 
 ## Description
 
+Developers are often tasked with creating interfaces that make it easy for non-developers to view and interact with information stored in databases. Often these interfaces are known as **C**ontent **M**anagement **S**ystems. This application offers companies a solution for managing their employees using node, inquirer, and MySQL.
 
 ```
 As a business owner
@@ -30,13 +31,15 @@ npm install
 
 To use this application, first fork and open the repo onto your local machine. Before attempting to use the app, open your terminal and perform a ```npm install``` to get the necessary packages.
 
-![npm install](assests/npmInstall.png)
+![npm install](assets/screenshots/npmInstall.png)
 
-Now, while in the repo, type ```node index.js``` to start the app. Then, fill in your answers to the questions that are prompted.
+Now, while in the repo, type ```node index.js``` to start the app. 
 
-![node index.js](assests/node.png)
+![node index.js](assets/screenshots/nodeIndex.png)
 
-![]()
+Select a choice from the drop down menu to complete tasks.
+
+![view departments](assets/screenshots/view.png)
 
 ## Credits
 
@@ -59,6 +62,12 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 ## Tests
 
 There has not been a test script written for this application yet.
+
+## Issues
+
+Due to time constraints, this application is still under development. The function to update an employees' role is not complete, and the "All Done" choices is not working as intended.
+
+Future development will correct these issues, as well as adding additional features like updating an employees' manager, view employees my manager, and delete departments, roles, and employees. 
 
 ## Questions
 

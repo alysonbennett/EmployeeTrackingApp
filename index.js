@@ -11,7 +11,7 @@ const commands = {
     "Add role": addRole,
     "Add employee": addEmployee,
     // "Update employee roles": updateEmployeeRole,
-    "All done": connection.end()
+    "All done": connection.end
 }
 
 // Additional prompts for adding content to the tables
