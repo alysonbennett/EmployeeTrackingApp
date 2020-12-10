@@ -4,14 +4,14 @@ const connection = require("./config/connection");
 
 // Connects functions to prompts
 const commands = {
-    "View department": function () { viewTable("department") },
-    "View role": () => viewTable("role"),
+    "View departments": function () { viewTable("department") },
+    "View roles": () => viewTable("role"),
     "View employees": () => viewTable("employee"),
     "Add department": addDepartment,
     "Add role": addRole,
     "Add employee": addEmployee,
-    "Update employee roles": () => false,
-    "All done": connection.end
+    // "Update employee roles": updateEmployeeRole,
+    "All done": connection.end()
 }
 
 // Additional prompts for adding content to the tables
@@ -92,8 +92,8 @@ function runPrompts() {
         name: "task",
         message: "What would you like to do?",
         choices: [
-            "View department",
-            "View role",
+            "View departments",
+            "View roles",
             "View employees",
             "Add department",
             "Add role",
@@ -104,10 +104,10 @@ function runPrompts() {
     })
         .then(function (answer) {
             switch (answer.task) {                
-                case "View department":
+                case "View departments":
                     viewTable("department");
                     break
-                case "View role":
+                case "View roles":
                     viewTable("role");
                     break
                 case "View employees":
@@ -123,7 +123,7 @@ function runPrompts() {
                     addEmployee();
                     break
                 case "Update employee role":
-                    updateEmployee();
+                    updateEmployeeRole();
                     break
                 case "All done":
                     connection.end();
@@ -206,4 +206,25 @@ function viewTable(table) {
     })
 }
 
-// function updateEmployee
+// Update employees' role (Still working through)
+// function updateEmployeeRole() {
+    
+//     inquirer.prompt([
+//         {
+//             name: "name",
+//             type: "list",
+//             message: "Which employee would you like to update?",
+//             choices: employee
+//         }, {
+//             name: "role",
+//             type: "list",
+//             message: "What is the new role for this employee?",
+//             choices: role
+//         }
+//     ]).then(function (response) {
+//         connection.query("UPDATE employee SET role_id = ? WHERE first_name = ?", [response.role, response.name], function (err, data) {
+//             console.table(data);
+//         })
+//         runPrompts();
+// });
+// }
